@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-News/Pods-News-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
+${BUILT_PRODUCTS_DIR}/JXPagingView/JXPagingView.framework
+${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
