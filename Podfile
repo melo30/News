@@ -7,6 +7,7 @@ target 'News' do
 pod 'Alamofire' #网络请求框架
 pod 'SwiftyJSON' #Json解析框架
 pod 'HandyJSON' #Json解析框架,可转模型
+pod 'SnapKit' #类似Masonry的布局框架
 pod 'JXSegmentedView'
 pod 'JXPagingView/Paging'
   # Pods for News
