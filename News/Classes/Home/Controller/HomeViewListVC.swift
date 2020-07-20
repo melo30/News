@@ -8,19 +8,20 @@
 
 import UIKit
 import JXSegmentedView
-class HomeViewListController: UIViewController {
+
+
+class HomeViewListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(red: CGFloat(arc4random()%255) / 255, green: CGFloat(arc4random()%255) / 255, blue: CGFloat(arc4random()%255) / 255, alpha: 1.0)
         
-        
     }
     
 }
 
-extension HomeViewListController : JXSegmentedListContainerViewListDelegate {
+extension HomeViewListVC : JXSegmentedListContainerViewListDelegate {
     func listView() -> UIView {
         return view
     }

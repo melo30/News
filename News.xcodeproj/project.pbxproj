@@ -11,15 +11,17 @@
 		6CED0AB808441C16D6948EFD /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B166A9E9B9D9BAE1079D1A92 /* Pods_News.framework */; };
 		741AE16124BB6E2000557DAC /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AE16024BB6E2000557DAC /* NetworkTool.swift */; };
 		741AE16324BB76D600557DAC /* MyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AE16224BB76D600557DAC /* MyCellModel.swift */; };
+		74721DBA24C5F9D100C181CA /* HttpRequestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74721DB924C5F9D100C181CA /* HttpRequestFile.swift */; };
+		74721DBC24C5FA6700C181CA /* HttpRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74721DBB24C5FA6700C181CA /* HttpRequestExtension.swift */; };
 		7488956A24C083AE00AF165E /* MyOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956824C083AD00AF165E /* MyOtherCell.swift */; };
 		7488956B24C083AE00AF165E /* MyOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7488956924C083AE00AF165E /* MyOtherCell.xib */; };
-		7488956D24C08FFE00AF165E /* HomeViewListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956C24C08FFE00AF165E /* HomeViewListController.swift */; };
+		7488956D24C08FFE00AF165E /* HomeViewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956C24C08FFE00AF165E /* HomeViewListVC.swift */; };
 		7488956F24C0A12200AF165E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956E24C0A12200AF165E /* PersonalInfoViewController.swift */; };
 		7488957124C0A13F00AF165E /* PersonalInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488957024C0A13F00AF165E /* PersonalInfoListViewController.swift */; };
 		74E7335B24B785B5006844B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74E7335924B785B5006844B9 /* Main.storyboard */; };
 		74E7335D24B785B7006844B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74E7335C24B785B7006844B9 /* Assets.xcassets */; };
 		74E7336024B785B7006844B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74E7335E24B785B7006844B9 /* LaunchScreen.storyboard */; };
-		74E7339424B7993A006844B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7337824B7993A006844B9 /* HomeViewController.swift */; };
+		74E7339424B7993A006844B9 /* HomeViewContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7337824B7993A006844B9 /* HomeViewContainerVC.swift */; };
 		74E7339524B7993A006844B9 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7337D24B7993A006844B9 /* VideoViewController.swift */; };
 		74E7339624B7993A006844B9 /* HuoshanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338224B7993A006844B9 /* HuoshanViewController.swift */; };
 		74E7339724B7993A006844B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338624B7993A006844B9 /* AppDelegate.swift */; };
@@ -36,16 +38,18 @@
 		353210F924C4429700E9CE80 /* HomeSingleTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSingleTextCell.swift; sourceTree = "<group>"; };
 		741AE16024BB6E2000557DAC /* NetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		741AE16224BB76D600557DAC /* MyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellModel.swift; sourceTree = "<group>"; };
+		74721DB924C5F9D100C181CA /* HttpRequestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestFile.swift; sourceTree = "<group>"; };
+		74721DBB24C5FA6700C181CA /* HttpRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestExtension.swift; sourceTree = "<group>"; };
 		7488956824C083AD00AF165E /* MyOtherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOtherCell.swift; sourceTree = "<group>"; };
 		7488956924C083AE00AF165E /* MyOtherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOtherCell.xib; sourceTree = "<group>"; };
-		7488956C24C08FFE00AF165E /* HomeViewListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewListController.swift; sourceTree = "<group>"; };
+		7488956C24C08FFE00AF165E /* HomeViewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewListVC.swift; sourceTree = "<group>"; };
 		7488956E24C0A12200AF165E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		7488957024C0A13F00AF165E /* PersonalInfoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoListViewController.swift; sourceTree = "<group>"; };
 		74E7335024B785B5006844B9 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E7335A24B785B5006844B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74E7335C24B785B7006844B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74E7335F24B785B7006844B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		74E7337824B7993A006844B9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		74E7337824B7993A006844B9 /* HomeViewContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewContainerVC.swift; sourceTree = "<group>"; };
 		74E7337D24B7993A006844B9 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		74E7338224B7993A006844B9 /* HuoshanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuoshanViewController.swift; sourceTree = "<group>"; };
 		74E7338624B7993A006844B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,9 +102,27 @@
 		741AE15F24BB6DF400557DAC /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				741AE16024BB6E2000557DAC /* NetworkTool.swift */,
+				74721DBD24C604C000C181CA /* 对Alamofire封装的网络工具 */,
+				74721DB824C5F9BD00C181CA /* Moya */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		74721DB824C5F9BD00C181CA /* Moya */ = {
+			isa = PBXGroup;
+			children = (
+				74721DB924C5F9D100C181CA /* HttpRequestFile.swift */,
+				74721DBB24C5FA6700C181CA /* HttpRequestExtension.swift */,
+			);
+			path = Moya;
+			sourceTree = "<group>";
+		};
+		74721DBD24C604C000C181CA /* 对Alamofire封装的网络工具 */ = {
+			isa = PBXGroup;
+			children = (
+				741AE16024BB6E2000557DAC /* NetworkTool.swift */,
+			);
+			path = "对Alamofire封装的网络工具";
 			sourceTree = "<group>";
 		};
 		74E7334724B785B5006844B9 = {
@@ -158,8 +180,8 @@
 		74E7337724B7993A006844B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				74E7337824B7993A006844B9 /* HomeViewController.swift */,
-				7488956C24C08FFE00AF165E /* HomeViewListController.swift */,
+				74E7337824B7993A006844B9 /* HomeViewContainerVC.swift */,
+				7488956C24C08FFE00AF165E /* HomeViewListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -438,8 +460,9 @@
 			files = (
 				74E7339724B7993A006844B9 /* AppDelegate.swift in Sources */,
 				74E7339524B7993A006844B9 /* VideoViewController.swift in Sources */,
-				74E7339424B7993A006844B9 /* HomeViewController.swift in Sources */,
-				7488956D24C08FFE00AF165E /* HomeViewListController.swift in Sources */,
+				74E7339424B7993A006844B9 /* HomeViewContainerVC.swift in Sources */,
+				74721DBA24C5F9D100C181CA /* HttpRequestFile.swift in Sources */,
+				7488956D24C08FFE00AF165E /* HomeViewListVC.swift in Sources */,
 				74E7339C24B7993A006844B9 /* MyTabBar.swift in Sources */,
 				74E7339624B7993A006844B9 /* HuoshanViewController.swift in Sources */,
 				74E7339B24B7993A006844B9 /* MyNavigationController.swift in Sources */,
@@ -450,6 +473,7 @@
 				353210FA24C4429700E9CE80 /* HomeSingleTextCell.swift in Sources */,
 				7488956A24C083AE00AF165E /* MyOtherCell.swift in Sources */,
 				74E7339A24B7993A006844B9 /* MyTabBarController.swift in Sources */,
+				74721DBC24C5FA6700C181CA /* HttpRequestExtension.swift in Sources */,
 				74E7339E24B79FA0006844B9 /* Const.swift in Sources */,
 				741AE16124BB6E2000557DAC /* NetworkTool.swift in Sources */,
 				74E733A024B7A083006844B9 /* UIColor+Extension.swift in Sources */,

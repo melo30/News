@@ -8,7 +8,12 @@
 
 import UIKit
 import JXSegmentedView
-class HomeViewController: UIViewController {
+//Moya封装自Alamofire,有点类似OC的YTKNetwork，不过YTKNetwork是纯面向对象编程，Moya是面向协议编程
+import Moya
+import SwiftyJSON
+
+
+class HomeViewContainerVC: UIViewController {
     var segmentedDataSource: JXSegmentedTitleDataSource?
     let segmentedView = JXSegmentedView()
     //懒加载
@@ -56,11 +61,33 @@ class HomeViewController: UIViewController {
         indicator.indicatorWidth = 20
         segmentedView.indicators = [indicator]
         
+        requestData()
     }
+    
+    func requestData() {
+            //实例化一个遵循HttpRequest的MoyaProvider
+            let provider = MoyaProvider<HttpRequest>()
+            
+            provider.request(.getHomePageChannelAPI) { (Result) in
+                switch Result {
+                    case let .success(response):
+                        let json = JSON(response.data)
+    //                    print("response.data = \(response.data)")
+                        print("responseObject = \(json)")
+                    
+//                        for let dict in json["Data"] {
+//                            dict
+//                        }
+//                        segmentedDataSource?.titles.append(<#T##newElement: String##String#>)
+                    case let .failure(error):
+                        print(error)
+                }
+            }
+        }
 }
 
 
-extension HomeViewController : JXSegmentedViewDelegate {
+extension HomeViewContainerVC : JXSegmentedViewDelegate {
     // MARK: - 可选实现JXSegmentedViewDelegate代理
     
     /// 点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，而不关心具体是点击还是滚动选中的情况。
@@ -92,12 +119,12 @@ extension HomeViewController : JXSegmentedViewDelegate {
 }
 
 
-extension HomeViewController : JXSegmentedListContainerViewDataSource {
+extension HomeViewContainerVC : JXSegmentedListContainerViewDataSource {
     func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
         return segmentedDataSource?.titles.count ?? 0
     }
     
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
-        return HomeViewListController()
+        return HomeViewListVC()
     }
 }

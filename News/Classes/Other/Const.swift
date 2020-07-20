@@ -96,10 +96,13 @@ func customFont(font :CGFloat) -> UIFont {
 //服务器地址
 //let BASE_URL = "https://lf.snssdk.com"
 //let BASE_URL = "https://ib.snssdk.com"
-let BASE_URL = "https://is.snssdk.com"
+//let BASE_URL = "https://is.snssdk.com"
+let BASE_URL = "http://wisdomnj.manjiwang.com"
 let device_id: String = "6096495334"
 let IID: String = "5034850950"
 
+//站点序号
+let wnj_siteId = "fef0791f7bd37b3de92954dd6d04ebb1"
 
 
 
