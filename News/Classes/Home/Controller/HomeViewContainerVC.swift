@@ -71,14 +71,14 @@ class HomeViewContainerVC: UIViewController {
             provider.request(.getHomePageChannelAPI) { (Result) in
                 switch Result {
                     case let .success(response):
+                        
+                        //SwiftyJson:只是将Json数据格式化
                         let json = JSON(response.data)
-    //                    print("response.data = \(response.data)")
                         print("responseObject = \(json)")
                     
-//                        for let dict in json["Data"] {
-//                            dict
-//                        }
-//                        segmentedDataSource?.titles.append(<#T##newElement: String##String#>)
+                        //HandyJson:可以直接将Json数据转成Model
+//                        let object = HomePageChannelModel.deserialize(from: json["Data"])
+                    
                     case let .failure(error):
                         print(error)
                 }

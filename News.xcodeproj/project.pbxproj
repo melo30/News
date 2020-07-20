@@ -13,6 +13,7 @@
 		741AE16324BB76D600557DAC /* MyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AE16224BB76D600557DAC /* MyCellModel.swift */; };
 		74721DBA24C5F9D100C181CA /* HttpRequestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74721DB924C5F9D100C181CA /* HttpRequestFile.swift */; };
 		74721DBC24C5FA6700C181CA /* HttpRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74721DBB24C5FA6700C181CA /* HttpRequestExtension.swift */; };
+		74721DC224C60EF600C181CA /* HomePageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74721DC124C60EF600C181CA /* HomePageChannelModel.swift */; };
 		7488956A24C083AE00AF165E /* MyOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956824C083AD00AF165E /* MyOtherCell.swift */; };
 		7488956B24C083AE00AF165E /* MyOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7488956924C083AE00AF165E /* MyOtherCell.xib */; };
 		7488956D24C08FFE00AF165E /* HomeViewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488956C24C08FFE00AF165E /* HomeViewListVC.swift */; };
@@ -40,6 +41,7 @@
 		741AE16224BB76D600557DAC /* MyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellModel.swift; sourceTree = "<group>"; };
 		74721DB924C5F9D100C181CA /* HttpRequestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestFile.swift; sourceTree = "<group>"; };
 		74721DBB24C5FA6700C181CA /* HttpRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestExtension.swift; sourceTree = "<group>"; };
+		74721DC124C60EF600C181CA /* HomePageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageChannelModel.swift; sourceTree = "<group>"; };
 		7488956824C083AD00AF165E /* MyOtherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOtherCell.swift; sourceTree = "<group>"; };
 		7488956924C083AE00AF165E /* MyOtherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOtherCell.xib; sourceTree = "<group>"; };
 		7488956C24C08FFE00AF165E /* HomeViewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewListVC.swift; sourceTree = "<group>"; };
@@ -92,13 +94,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		353210F824C4428700E9CE80 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		741AE15F24BB6DF400557DAC /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +118,14 @@
 				741AE16024BB6E2000557DAC /* NetworkTool.swift */,
 			);
 			path = "对Alamofire封装的网络工具";
+			sourceTree = "<group>";
+		};
+		74721DC024C60EE100C181CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74721DC124C60EF600C181CA /* HomePageChannelModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		74E7334724B785B5006844B9 = {
@@ -170,7 +173,7 @@
 		74E7337624B7993A006844B9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				353210F824C4428700E9CE80 /* Model */,
+				74721DC024C60EE100C181CA /* Model */,
 				353210F724C4428700E9CE80 /* View */,
 				74E7337724B7993A006844B9 /* Controller */,
 			);
@@ -471,6 +474,7 @@
 				741AE16324BB76D600557DAC /* MyCellModel.swift in Sources */,
 				7488957124C0A13F00AF165E /* PersonalInfoListViewController.swift in Sources */,
 				353210FA24C4429700E9CE80 /* HomeSingleTextCell.swift in Sources */,
+				74721DC224C60EF600C181CA /* HomePageChannelModel.swift in Sources */,
 				7488956A24C083AE00AF165E /* MyOtherCell.swift in Sources */,
 				74E7339A24B7993A006844B9 /* MyTabBarController.swift in Sources */,
 				74721DBC24C5FA6700C181CA /* HttpRequestExtension.swift in Sources */,
