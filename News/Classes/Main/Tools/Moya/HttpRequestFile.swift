@@ -9,6 +9,8 @@
 import Foundation
 
 enum HttpRequest {
-    case getHomePageChannelAPI //获取首页频道接口
-    case getHomePageNewsListAPI //获取首页新闻列表
+    //获取首页频道接口
+    case getHomePageChannelAPI
+    //获取首页新闻列表
+    case getHomePageNewsListAPI
 }

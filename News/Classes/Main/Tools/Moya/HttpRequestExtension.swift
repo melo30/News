@@ -19,7 +19,7 @@ extension HttpRequest : TargetType {
     var path: String {
         switch self {
         case .getHomePageChannelAPI:
-            return "api/v1/channel/getChannel"
+            return "/api/v1/channel/getChannel"
         case .getHomePageNewsListAPI:
             return "/api/v1/news/getNews"
 //        default: //swift的switch中的default可以不用写~

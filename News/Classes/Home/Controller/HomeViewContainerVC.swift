@@ -8,6 +8,7 @@
 
 import UIKit
 import JXSegmentedView
+import Alamofire
 //Moya封装自Alamofire,有点类似OC的YTKNetwork，不过YTKNetwork是纯面向对象编程，Moya是面向协议编程
 import Moya
 import SwiftyJSON
@@ -49,7 +50,7 @@ class HomeViewContainerVC: UIViewController {
         //3.1配置数据源相关配置属性
         //segmentedDataSource一定要通过属性强持有，不然会被释放掉
         segmentedDataSource = JXSegmentedTitleDataSource()
-        segmentedDataSource?.titles = ["关注","推荐","体育","视频","小视频","娱乐","健康","美食","军事","疫情"]
+//        segmentedDataSource?.titles = ["关注","推荐","体育","视频","小视频","娱乐","健康","美食","军事","疫情"]
         //3.2设置title的颜色渐变过渡
         segmentedDataSource?.isTitleColorGradientEnabled = true
         //3.3关联dataSource
@@ -65,25 +66,60 @@ class HomeViewContainerVC: UIViewController {
     }
     
     func requestData() {
+        //1.用Moya发起请求
             //实例化一个遵循HttpRequest的MoyaProvider
             let provider = MoyaProvider<HttpRequest>()
-            
+
             provider.request(.getHomePageChannelAPI) { (Result) in
                 switch Result {
-                    case let .success(response):
-                        
-                        //SwiftyJson:只是将Json数据格式化
-                        let json = JSON(response.data)
-                        print("responseObject = \(json)")
+                case let .success(response):
+                    let dict:[String:Any] = try! JSONSerialization.jsonObject(with: response.data, options: .mutableContainers) as! [String:Any]
                     
-                        //HandyJson:可以直接将Json数据转成Model
-//                        let object = HomePageChannelModel.deserialize(from: json["Data"])
+                    let list = dict["Data"] as! Array<AnyObject>
                     
-                    case let .failure(error):
+                    let channelModel = [HomePageChannelModel].deserialize(from: list)
+                    var titles : [String] = []
+                    channelModel?.forEach({ (model) in
+                        titles.append((model?.channelName)!)
+                    })
+                    
+                    self.segmentedDataSource?.titles = titles
+                    self.segmentedView.reloadData()
+                    
+                    
+                case let .failure(error):
                         print(error)
                 }
             }
-        }
+        
+        
+        //2.用Alamofire发起请求
+//        AF.request("http://wisdomnj.manjiwang.com/api/v1/channel/getChannel", method: .get, parameters: ["siteId":wnj_siteId,"userId":"","type":"1","size":2,"regionCode":500105]).responseJSON { (response) in
+//            switch response.result {
+//            case .success(let json):
+//                print("json:\(json)")
+//                let dict = json as! Dictionary<String,Any>
+//                let list = dict["Data"] as! Array<AnyObject>
+//
+//                let channelModel = [HomePageChannelModel].deserialize(from: list)
+//
+//                print("model:\(String(describing: channelModel))")
+//
+//                var titles : [String] = []
+//                channelModel?.forEach({ (model) in
+//                    titles.append((model?.channelName)!)
+//                })
+//
+//                self.segmentedDataSource?.titles = titles
+//                self.segmentedView.reloadData()
+//
+//            case .failure(let error):
+//                print("error:\(error)")
+//            }
+//
+//        }
+        
+    }
 }
 
 
