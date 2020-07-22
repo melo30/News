@@ -29,7 +29,7 @@ class HomeSingleTextCell: UITableViewCell {
     func initSubviews() {
         titleLab = UILabel()
         titleLab?.numberOfLines = 3
-        titleLab?.backgroundColor = RGBColor(r: 51, g: 51, b: 51)
+        titleLab?.textColor = RGBColor(r: 51, g: 51, b: 51)
         titleLab?.font = UIFont.systemFont(ofSize: 15)
         contentView.addSubview(titleLab!)
         titleLab?.snp.makeConstraints({ (make) in

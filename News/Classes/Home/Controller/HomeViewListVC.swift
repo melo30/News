@@ -12,17 +12,31 @@ import Moya
 import SwiftyJSON
 import HandyJSON
 
-class HomeViewListVC: UIViewController {
+class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    //全局变量模型数组
+    //初始化一个全局变量模型空数组
     var datas = [HomePageListDataList]()
-    
+    //这里直接利用lazy懒加载语法初始化出来一个tableView
+    lazy var tableView : UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = UIColor.white
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(HomeSingleTextCell.self, forCellReuseIdentifier: NSStringFromClass(HomeSingleTextCell.self))
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(red: CGFloat(arc4random()%255) / 255, green: CGFloat(arc4random()%255) / 255, blue: CGFloat(arc4random()%255) / 255, alpha: 1.0)
         requestData()
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+        
     }
     
     func requestData() {
@@ -48,13 +62,30 @@ class HomeViewListVC: UIViewController {
                     self.datas = model?.Data?.list ?? []
                 
                     //第四步.刷新tableView,展示数据
-                    
+                    self.tableView.reloadData()
                 case let .failure(error):
                         print(error)
             }
             
         }
     }
+    
+    //MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datas.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model : HomePageListDataList = datas[indexPath.row];
+        let cell : HomeSingleTextCell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(HomeSingleTextCell.self), for: indexPath) as! HomeSingleTextCell
+        cell.titleLab?.text = model.newsTitle
+        return cell
+    }
+    
+    //这里高度不用设置，SnapKit和Masonry同理只要Cell内部控件把Cell撑起来了，就能自动自适应高度~
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
 }
 
 extension HomeViewListVC : JXSegmentedListContainerViewListDelegate {
