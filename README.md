@@ -1,5 +1,5 @@
 # News
-## 项目中使用的第三方框架
+## 项目中用到的库：
 ### 网络请求和数据反序列化：Moya + HandyJSON
 ### Json解析框架：SwiftyJSON
 ### 自动布局框架：SnapKit
