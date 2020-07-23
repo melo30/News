@@ -19,7 +19,7 @@ class HomePageListModel : HandyJSON {
 }
 
 class HomePageListData: HandyJSON {
-    var list : [HomePageListDataList]?//用中括号包起来代表是s数组模型
+    var list : [HomePageListDataList]?//用中括号包起来代表是数组模型
     required init() {}
 }
 

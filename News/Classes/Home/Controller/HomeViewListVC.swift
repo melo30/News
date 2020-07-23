@@ -12,10 +12,17 @@ import Moya
 import SwiftyJSON
 import HandyJSON
 import Kingfisher
+import MJRefresh
 
 class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //父容器传值过来的属性
     var channelId : String?
+    //顶部刷新
+    let header = MJRefreshNormalHeader()
+    //底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    //页码（初始值为1）
+    var pageIndex : Int = 1
     
     //初始化一个全局变量模型空数组
     var datas = [HomePageListDataList]()
@@ -32,43 +39,89 @@ class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(red: CGFloat(arc4random()%255) / 255, green: CGFloat(arc4random()%255) / 255, blue: CGFloat(arc4random()%255) / 255, alpha: 1.0)
-        requestData()
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
         
+        //顶部刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        header.setTitle("松开即可刷新哟...", for: .pulling)
+        header.setTitle("刷新中...", for: .refreshing)
+        tableView.mj_header = header
+        //底部刷新
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        tableView.mj_footer = footer
+        
+        //开始刷新
+        tableView.mj_header?.beginRefreshing()
+        
     }
     
-    func requestData() {
+    @objc func headerRefresh() {
+        pageIndex = 1
         //实例化一个遵循HttpRequest的MoyaProvider
         let provider = MoyaProvider<HttpRequest>()
-        provider.request(.getHomePageNewsListAPI(siteId: wnj_siteId, channelId: channelId!, regionCode: 0, userId: "", pageIndex: 1, pageSize: 20)) { (Result) in
-            switch Result {
-                case let .success(response):
-                    //第一步.Data转成String
-                    let jsonString = String(data: response.data, encoding: .utf8)
+        provider.request(.getHomePageNewsListAPI(siteId: wnj_siteId, channelId: channelId!, regionCode: 0, userId: "", pageIndex: pageIndex, pageSize: 20)) { (Result) in
+                switch Result {
+                    case let .success(response):
+                        self.tableView.mj_header?.endRefreshing()
+                        //第一步.Data转成String
+                        let jsonString = String(data: response.data, encoding: .utf8)
+                        
+                        //json字符串转字典可以清晰看到返回结果层级
+                        let dict = getDictionaryFromJSONString(jsonString: jsonString!)
+                        print(dict)
+                        
+                        //第二步.HandyJSON转成Model
+                        let model = JSONDeserializer<HomePageListModel>.deserializeFrom(json: jsonString)
+                        //第三步.先清空数组，再把模型数组放入self.datas中去，注意：闭包内部使用全局变量datas要加self哟~
+                        self.datas.removeAll()
+                        self.datas = model?.Data?.list ?? []
                     
-                    //json字符串转字典可以清晰看到返回结果层级
-                    let dict = getDictionaryFromJSONString(jsonString: jsonString!)
-                    print(dict)
+                        //第四步.刷新tableView,展示数据
+                        self.tableView.reloadData()
                     
-                    //第二步.HandyJSON转成Model
-                    let model = JSONDeserializer<HomePageListModel>.deserializeFrom(json: jsonString)
-    
-                    //第三步.把模型数组放入self.datas中去，注意：闭包内部使用全局变量datas要加self哟~
-                    self.datas = model?.Data?.list ?? []
-                
-                    //第四步.刷新tableView,展示数据
-                    self.tableView.reloadData()
-                
-                case let .failure(error):
+                    case let .failure(error):
+                        self.tableView.mj_header?.endRefreshing()
                         print(error)
             }
-            
+        }
+    }
+    
+    @objc func footerRefresh() {
+        pageIndex += 1
+        //实例化一个遵循HttpRequest的MoyaProvider
+        let provider = MoyaProvider<HttpRequest>()
+        provider.request(.getHomePageNewsListAPI(siteId: wnj_siteId, channelId: channelId!, regionCode: 0, userId: "", pageIndex: pageIndex, pageSize: 20)) { (Result) in
+                switch Result {
+                    case let .success(response):
+                        self.tableView.mj_footer?.endRefreshing()
+                        //第一步.Data转成String
+                        let jsonString = String(data: response.data, encoding: .utf8)
+                        
+                        //json字符串转字典可以清晰看到返回结果层级
+                        let dict = getDictionaryFromJSONString(jsonString: jsonString!)
+                        print(dict)
+                        
+                        //第二步.HandyJSON转成Model
+                        let model = JSONDeserializer<HomePageListModel>.deserializeFrom(json: jsonString)
+        
+                        //第三步.把模型数组加入self.datas中去，注意：闭包内部使用全局变量datas要加self哟~
+                        if (model?.Data?.list!.count)! > 0 {
+                            self.datas.append(contentsOf: (model?.Data!.list)!)
+                        }else {
+                            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+                        }
+                        
+                        //第四步.刷新tableView,展示数据
+                        self.tableView.reloadData()
+                    
+                    case let .failure(error):
+                        self.tableView.mj_footer?.endRefreshing()
+                        print(error)
+            }
         }
     }
     
