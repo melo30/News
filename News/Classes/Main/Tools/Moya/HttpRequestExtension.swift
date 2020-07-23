@@ -22,8 +22,6 @@ extension HttpRequest : TargetType {
             return "/api/v1/channel/getChannel"
         case .getHomePageNewsListAPI:
             return "/api/v1/news/getNews"
-//        default: //swift的switch中的default可以不用写~
-//            return ""
         }
     }
     
@@ -34,8 +32,7 @@ extension HttpRequest : TargetType {
             return .get
         case .getHomePageNewsListAPI:
             return .get
-//        default:
-//            return .get
+
         }
     }
     
@@ -43,17 +40,24 @@ extension HttpRequest : TargetType {
     var task: Task {
         
         //初始化一个空的可变字典
-        var params : [String : Any] = [:]
+        var parameters : [String : Any] = [:]
         
         switch self {
-        case .getHomePageChannelAPI:
-            params = ["siteId":wnj_siteId,"userId":"","type":"1","size":2,"regionCode":500105]
-        case .getHomePageNewsListAPI:
-            params = ["siteId":wnj_siteId,"channelId":"7978eb1aa8142f830b1867a9eb94cc50","regionCode":0,"userId":"","pageIndex":1,"pageSize":20]
-//        default:
-//            return .requestPlain //不需要传参走这里
+        case .getHomePageChannelAPI(let siteId, let userId, let type, let size, let regionCode):
+            parameters["siteId"] = siteId
+            parameters["userId"] = userId
+            parameters["type"] = type
+            parameters["size"] = size
+            parameters["regionCode"] = regionCode
+        case .getHomePageNewsListAPI(let siteId, let channelId, let regionCode, let userId, let  pageIndex, let pageSize):
+            parameters["siteId"] = siteId
+            parameters["channelId"] = channelId
+            parameters["regionCode"] = regionCode
+            parameters["userId"] = userId
+            parameters["pageIndex"] = pageIndex
+            parameters["pageSize"] = pageSize
         }
-        return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
     
     //5.设置请求头

@@ -90,8 +90,15 @@ func customFont(font :CGFloat) -> UIFont {
     return UIFont.systemFont(ofSize: font)
 }
 
-
-
+//Json字符串转字典
+func getDictionaryFromJSONString(jsonString:String) ->NSDictionary{
+    let jsonData:Data = jsonString.data(using: .utf8)!
+    let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+    if dict != nil {
+        return dict as! NSDictionary
+    }
+    return NSDictionary()
+}
 
 //服务器地址
 //let BASE_URL = "https://lf.snssdk.com"

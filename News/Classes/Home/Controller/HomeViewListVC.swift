@@ -11,8 +11,11 @@ import JXSegmentedView
 import Moya
 import SwiftyJSON
 import HandyJSON
+import Kingfisher
 
 class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    //父容器传值过来的属性
+    var channelId : String?
     
     //初始化一个全局变量模型空数组
     var datas = [HomePageListDataList]()
@@ -23,6 +26,7 @@ class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(HomeSingleTextCell.self, forCellReuseIdentifier: NSStringFromClass(HomeSingleTextCell.self))
+        tableView.register(HomePageSinglePicCell.self, forCellReuseIdentifier: NSStringFromClass(HomePageSinglePicCell.self))
         return tableView
     }()
     
@@ -42,27 +46,25 @@ class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     func requestData() {
         //实例化一个遵循HttpRequest的MoyaProvider
         let provider = MoyaProvider<HttpRequest>()
-        provider.request(.getHomePageNewsListAPI) { (Result) in
+        provider.request(.getHomePageNewsListAPI(siteId: wnj_siteId, channelId: channelId!, regionCode: 0, userId: "", pageIndex: 1, pageSize: 20)) { (Result) in
             switch Result {
                 case let .success(response):
                     //第一步.Data转成String
                     let jsonString = String(data: response.data, encoding: .utf8)
+                    
+                    //json字符串转字典可以清晰看到返回结果层级
+                    let dict = getDictionaryFromJSONString(jsonString: jsonString!)
+                    print(dict)
+                    
                     //第二步.HandyJSON转成Model
                     let model = JSONDeserializer<HomePageListModel>.deserializeFrom(json: jsonString)
-                    
-                    //这里可以用for-in 或者forEach遍历查看一下数组内部的值，看HandyJson是否转成功啦~
-//                    model?.Data?.list?.forEach({ (listModel) in
-//                        print(listModel.newsTitle)
-//                    })
-                    for listModel in (model?.Data!.list)! {
-                        print(listModel.newsTitle as Any)
-                    }
-                
+    
                     //第三步.把模型数组放入self.datas中去，注意：闭包内部使用全局变量datas要加self哟~
                     self.datas = model?.Data?.list ?? []
                 
                     //第四步.刷新tableView,展示数据
                     self.tableView.reloadData()
+                
                 case let .failure(error):
                         print(error)
             }
@@ -77,8 +79,31 @@ class HomeViewListVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model : HomePageListDataList = datas[indexPath.row];
+        if model.newsType == "news" {
+            if model.newsCoverList!.count > 0 {
+                let cell : HomePageSinglePicCell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(HomePageSinglePicCell.self), for: indexPath) as! HomePageSinglePicCell
+                cell.titleLab?.text = model.newsTitle
+                cell.imgV?.kf.setImage(with: URL(string: (model.newsCoverList?[0])!))
+                cell.authorLab?.text = model.userName
+                cell.commentLab?.text = "\(String(model.commentCount!,radix: 10)) 评论"
+                cell.timeLab?.text = model.newsPublishTime
+                return cell
+            }else {
+                let cell : HomeSingleTextCell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(HomeSingleTextCell.self), for: indexPath) as! HomeSingleTextCell
+                cell.titleLab?.text = model.newsTitle
+                cell.authorLab?.text = model.userName
+                cell.commentLab?.text = "\(String(model.commentCount!,radix: 10)) 评论"
+                cell.timeLab?.text = model.newsPublishTime
+                return cell
+            }
+        }
+        
+        //视频、广告等其他类型cell，后面再添加
         let cell : HomeSingleTextCell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(HomeSingleTextCell.self), for: indexPath) as! HomeSingleTextCell
         cell.titleLab?.text = model.newsTitle
+        cell.authorLab?.text = model.userName
+        cell.commentLab?.text = "\(String(model.commentCount!,radix: 10)) 评论"
+        cell.timeLab?.text = model.newsPublishTime
         return cell
     }
     

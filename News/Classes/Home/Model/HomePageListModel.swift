@@ -26,5 +26,11 @@ class HomePageListData: HandyJSON {
 class HomePageListDataList: HandyJSON {
     var regionCode : Int?
     var newsTitle : String?
+    var userName : String?
+    var commentCount : Int?
+    var newsPublishTime : String?
+    var newsType : String?
+    var newsCoverList : Array<String>?
+    
     required init() {}
 }

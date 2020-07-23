@@ -17,6 +17,8 @@ import SwiftyJSON
 class HomeViewContainerVC: UIViewController {
     var segmentedDataSource: JXSegmentedTitleDataSource?
     let segmentedView = JXSegmentedView()
+    var channelIds : Array<String>?
+    
     //懒加载
     lazy var listContainerView : JXSegmentedListContainerView! = {
         return JXSegmentedListContainerView(dataSource: self)
@@ -31,12 +33,16 @@ class HomeViewContainerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
-        
+        //导航栏背景颜色
+        navigationController?.navigationBar.barTintColor = UIColor.kThemRedColor()
+        //导航栏字体颜色
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         //设置导航栏为不透明，这样就可以让frame自动从导航栏下面开始布局
         navigationController?.navigationBar.isTranslucent = false
-        //或者 酱紫
-//        self.edgesForExtendedLayout = .init(rawValue: 0)
+                //或者 酱紫
+        //        self.edgesForExtendedLayout = .init(rawValue: 0)
+        
+        view.backgroundColor = UIColor.white
         
         //1.初始化segmentView
         segmentedView.delegate = self
@@ -50,16 +56,24 @@ class HomeViewContainerVC: UIViewController {
         //3.1配置数据源相关配置属性
         //segmentedDataSource一定要通过属性强持有，不然会被释放掉
         segmentedDataSource = JXSegmentedTitleDataSource()
-//        segmentedDataSource?.titles = ["关注","推荐","体育","视频","小视频","娱乐","健康","美食","军事","疫情"]
-        //3.2设置title的颜色渐变过渡
+        //设置标题普通状态的颜色
+        segmentedDataSource?.titleNormalColor = UIColor.black
+        //设置标题选中状态的颜色
+        segmentedDataSource?.titleSelectedColor = UIColor.kThemRedColor()
+        //设置标题普通状态的字体
+        segmentedDataSource?.titleNormalFont = UIFont.systemFont(ofSize: 15)
+        //设置标题选中状态的字体
+        segmentedDataSource?.titleSelectedFont = UIFont.boldSystemFont(ofSize: 17)
+        //设置title的颜色渐变过渡
         segmentedDataSource?.isTitleColorGradientEnabled = true
-        //3.3关联dataSource
+        //关联dataSource
         segmentedView.dataSource = segmentedDataSource
         
         
         //4.初始化指示器indicator
         let indicator = JXSegmentedIndicatorLineView()
-        indicator.indicatorWidth = 20
+        indicator.indicatorWidth = 30
+        indicator.indicatorColor = UIColor.kThemRedColor()
         segmentedView.indicators = [indicator]
         
         requestData()
@@ -70,7 +84,7 @@ class HomeViewContainerVC: UIViewController {
             //实例化一个遵循HttpRequest的MoyaProvider
             let provider = MoyaProvider<HttpRequest>()
 
-            provider.request(.getHomePageChannelAPI) { (Result) in
+            provider.request(.getHomePageChannelAPI(siteId: wnj_siteId, userId: "", type: 1, size: 2, regionCode: 50015)) { (Result) in
                 switch Result {
                 case let .success(response):
                     let dict:[String:Any] = try! JSONSerialization.jsonObject(with: response.data, options: .mutableContainers) as! [String:Any]
@@ -78,11 +92,17 @@ class HomeViewContainerVC: UIViewController {
                     let list = dict["Data"] as! Array<AnyObject>
                     
                     let channelModel = [HomePageChannelModel].deserialize(from: list)
+                    
                     var titles : [String] = []
+                    
+                    self.channelIds = [String]()
+                    
                     channelModel?.forEach({ (model) in
                         titles.append((model?.channelName)!)
+                        self.channelIds?.append(model!.channelId!)
                     })
                     
+                    //只有设置了segmentedDataSource的titles属性，才会走最下面加载子Controller的代理方法
                     self.segmentedDataSource?.titles = titles
                     self.segmentedView.reloadData()
                     
@@ -161,6 +181,8 @@ extension HomeViewContainerVC : JXSegmentedListContainerViewDataSource {
     }
     
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
-        return HomeViewListVC()
+        let listVc = HomeViewListVC()
+        listVc.channelId = channelIds![index]
+        return listVc
     }
 }

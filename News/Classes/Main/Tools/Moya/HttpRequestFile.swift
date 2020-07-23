@@ -10,7 +10,7 @@ import Foundation
 
 enum HttpRequest {
     //获取首页频道接口
-    case getHomePageChannelAPI
+    case getHomePageChannelAPI(siteId: String, userId: String, type: Int, size: Int, regionCode: Int)
     //获取首页新闻列表
-    case getHomePageNewsListAPI
+    case getHomePageNewsListAPI(siteId: String, channelId: String, regionCode: Int, userId: String, pageIndex: Int, pageSize: Int)
 }

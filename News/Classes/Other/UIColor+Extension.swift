@@ -9,7 +9,12 @@
 import UIKit
 
 extension UIColor {
-    /// 背景灰色（类方法）- 外部可直接通过 UIColor.globalBackgroundColor() 来调用
+    ///主题红色（类方法）- 外部可直接通过 UIColor.kthemRedColor() 来调用
+    class func kThemRedColor() -> UIColor {
+        return colorWithHexString(hexString: "#C5403A")
+    }
+    
+    /// 背景灰色
     class func globalBackgroundColor() -> UIColor {
         return RGBColor(r: 248, g: 249, b: 247)
     }
