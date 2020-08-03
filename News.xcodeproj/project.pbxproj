@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		353210FA24C4429700E9CE80 /* HomeSingleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353210F924C4429700E9CE80 /* HomeSingleTextCell.swift */; };
 		6CED0AB808441C16D6948EFD /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B166A9E9B9D9BAE1079D1A92 /* Pods_News.framework */; };
+		7415F3BE24D85DC20050D599 /* HomePageFunctionPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7415F3BD24D85DC20050D599 /* HomePageFunctionPopView.swift */; };
 		741AE16124BB6E2000557DAC /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AE16024BB6E2000557DAC /* NetworkTool.swift */; };
 		741AE16324BB76D600557DAC /* MyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AE16224BB76D600557DAC /* MyCellModel.swift */; };
 		745E2ACB24C9D39B00B9FF81 /* HomePageSinglePicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745E2ACA24C9D39B00B9FF81 /* HomePageSinglePicCell.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		10506F875DB8AD3A5B0F1111 /* Pods-News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News.release.xcconfig"; path = "Target Support Files/Pods-News/Pods-News.release.xcconfig"; sourceTree = "<group>"; };
 		353210F924C4429700E9CE80 /* HomeSingleTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSingleTextCell.swift; sourceTree = "<group>"; };
+		7415F3BD24D85DC20050D599 /* HomePageFunctionPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageFunctionPopView.swift; sourceTree = "<group>"; };
 		741AE16024BB6E2000557DAC /* NetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		741AE16224BB76D600557DAC /* MyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellModel.swift; sourceTree = "<group>"; };
 		745E2ACA24C9D39B00B9FF81 /* HomePageSinglePicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageSinglePicCell.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				74E7339324B7993A006844B9 /* MyTabBar.swift */,
+				7415F3BD24D85DC20050D599 /* HomePageFunctionPopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				74E7339C24B7993A006844B9 /* MyTabBar.swift in Sources */,
 				74E7339624B7993A006844B9 /* HuoshanViewController.swift in Sources */,
 				74E7339B24B7993A006844B9 /* MyNavigationController.swift in Sources */,
+				7415F3BE24D85DC20050D599 /* HomePageFunctionPopView.swift in Sources */,
 				7488956F24C0A12200AF165E /* PersonalInfoViewController.swift in Sources */,
 				74E7339924B7993A006844B9 /* MineViewController.swift in Sources */,
 				7464D75424C888A6003DC7F0 /* HomePageListModel.swift in Sources */,

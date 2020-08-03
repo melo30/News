@@ -23,9 +23,14 @@ class MyTabBar: UITabBar {
         let publishButton = UIButton(type: .custom)
         publishButton.setBackgroundImage(UIImage(named: "feed_publish_44x44_"), for: .normal)
         publishButton.setBackgroundImage(UIImage(named: "feed_publish_press_44x44_"), for: .selected)
+        publishButton.addTarget(self, action: #selector(publishButtonAction), for: .touchUpInside)
         publishButton.sizeToFit()
         return publishButton
     }()
+    
+    @objc func publishButtonAction() {
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
