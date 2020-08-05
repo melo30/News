@@ -29,7 +29,8 @@ class MyTabBar: UITabBar {
     }()
     
     @objc func publishButtonAction() {
-        
+        let popV = HomePageFunctionPopView()
+        popV.show()
     }
     
     required init?(coder: NSCoder) {

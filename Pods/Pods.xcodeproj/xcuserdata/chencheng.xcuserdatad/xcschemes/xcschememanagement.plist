@@ -32,10 +32,20 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Moya.xcscheme_^#shared#^_</key>
+		<key>Kingfisher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>8</integer>
+		</dict>
+		<key>MJRefresh.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Moya.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods-News.xcscheme</key>
 		<dict>
