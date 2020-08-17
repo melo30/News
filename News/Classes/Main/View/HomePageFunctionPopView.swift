@@ -16,15 +16,21 @@ class HomePageFunctionPopView: UIView {
         
         super.init(frame: frame)
         
-        self.initSubviews()
+        self.initSubviews() 
         
         self.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         self.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        self.addGestureRecognizer(tapGesture);
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    // MARK: - tapGesture
+    @objc func tapGestureAction() {
+        self.hide()
     }
     
     // MARK: - Private
