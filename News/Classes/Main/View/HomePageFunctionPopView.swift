@@ -8,9 +8,17 @@
 
 import UIKit
 
-class HomePageFunctionPopView: UIView {
+class HomePageFunctionPopView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var bgView: UIView! //这里必须要加!或者?号，不然会报错
+    
+    var collectionView: UICollectionView!
+    
+    lazy var datas : NSMutableArray = {
+        var datas = NSMutableArray()
+//        datas.
+        return datas
+    }()
     
     override init(frame: CGRect) {
         
@@ -40,6 +48,25 @@ class HomePageFunctionPopView: UIView {
         bgView.backgroundColor = UIColor.white
         addSubview(bgView)
         
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 0;
+        flowLayout.minimumInteritemSpacing = 0
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.white
+        addSubview(collectionView)
+        
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return datas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : HomePageFunctionCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(HomePageFunctionCollectionCell.self), for: indexPath) as! HomePageFunctionCollectionCell
+        return cell
     }
     
     func show() {
