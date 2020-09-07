@@ -29,7 +29,7 @@
 		74E7336024B785B7006844B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74E7335E24B785B7006844B9 /* LaunchScreen.storyboard */; };
 		74E7339424B7993A006844B9 /* HomeViewContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7337824B7993A006844B9 /* HomeViewContainerVC.swift */; };
 		74E7339524B7993A006844B9 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7337D24B7993A006844B9 /* VideoViewController.swift */; };
-		74E7339624B7993A006844B9 /* HuoshanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338224B7993A006844B9 /* HuoshanViewController.swift */; };
+		74E7339624B7993A006844B9 /* ApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338224B7993A006844B9 /* ApplicationViewController.swift */; };
 		74E7339724B7993A006844B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338624B7993A006844B9 /* AppDelegate.swift */; };
 		74E7339924B7993A006844B9 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338A24B7993A006844B9 /* MineViewController.swift */; };
 		74E7339A24B7993A006844B9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7338F24B7993A006844B9 /* MyTabBarController.swift */; };
@@ -63,7 +63,7 @@
 		74E7335F24B785B7006844B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74E7337824B7993A006844B9 /* HomeViewContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewContainerVC.swift; sourceTree = "<group>"; };
 		74E7337D24B7993A006844B9 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		74E7338224B7993A006844B9 /* HuoshanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuoshanViewController.swift; sourceTree = "<group>"; };
+		74E7338224B7993A006844B9 /* ApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationViewController.swift; sourceTree = "<group>"; };
 		74E7338624B7993A006844B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74E7338724B7993A006844B9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74E7338A24B7993A006844B9 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				74E7338D24B7993A006844B9 /* Main */,
 				74E7337624B7993A006844B9 /* Home */,
 				74E7337B24B7993A006844B9 /* Video */,
-				74E7338024B7993A006844B9 /* Huoshan */,
+				74E7338024B7993A006844B9 /* Application */,
 				74E7338824B7993A006844B9 /* Mine */,
 			);
 			path = Classes;
@@ -234,20 +234,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		74E7338024B7993A006844B9 /* Huoshan */ = {
+		74E7338024B7993A006844B9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				74E7338124B7993A006844B9 /* Controller */,
 				74E7338324B7993A006844B9 /* Model */,
 				74E7338424B7993A006844B9 /* View */,
 			);
-			path = Huoshan;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		74E7338124B7993A006844B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				74E7338224B7993A006844B9 /* HuoshanViewController.swift */,
+				74E7338224B7993A006844B9 /* ApplicationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -483,7 +483,7 @@
 				74721DBA24C5F9D100C181CA /* HttpRequestFile.swift in Sources */,
 				7488956D24C08FFE00AF165E /* HomeViewListVC.swift in Sources */,
 				74E7339C24B7993A006844B9 /* MyTabBar.swift in Sources */,
-				74E7339624B7993A006844B9 /* HuoshanViewController.swift in Sources */,
+				74E7339624B7993A006844B9 /* ApplicationViewController.swift in Sources */,
 				35E1235524EA7C0900ED12D0 /* HomePageFunctionCollectionCell.swift in Sources */,
 				74E7339B24B7993A006844B9 /* MyNavigationController.swift in Sources */,
 				7415F3BE24D85DC20050D599 /* HomePageFunctionPopView.swift in Sources */,

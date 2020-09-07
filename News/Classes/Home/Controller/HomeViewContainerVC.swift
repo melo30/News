@@ -43,7 +43,7 @@ class HomeViewContainerVC: UIViewController {
         //        self.edgesForExtendedLayout = .init(rawValue: 0)
         
         view.backgroundColor = UIColor.white
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "创作", style: .plain, target: self, action: #selector(rightBarButtonAction))
         //1.初始化segmentView
         segmentedView.delegate = self
         view.addSubview(segmentedView)
@@ -77,6 +77,11 @@ class HomeViewContainerVC: UIViewController {
         segmentedView.indicators = [indicator]
         
         requestData()
+    }
+    
+    @objc func rightBarButtonAction() {
+        let popV = HomePageFunctionPopView()
+        popV.show()
     }
     
     func requestData() {

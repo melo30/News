@@ -31,12 +31,12 @@ class MyTabBarController: UITabBarController {
     func addChildViewController() {
         setChildViewController(HomeViewContainerVC(), title: "首页", imageName: "home_tabbar_32x32_", selectedImageName: "home_tabbar_press_32x32_")
         setChildViewController(VideoViewController(), title: "视频", imageName: "video_tabbar_32x32_", selectedImageName: "video_tabbar_press_32x32_")
-        setChildViewController(HuoshanViewController(), title: "小视频", imageName: "huoshan_tabbar_32x32_", selectedImageName: "huoshan_tabbar_press_32x32_")
+        setChildViewController(ApplicationViewController(), title: "应用", imageName: "huoshan_tabbar_32x32_", selectedImageName: "huoshan_tabbar_press_32x32_")
         setChildViewController(MineViewController(), title: "我的", imageName: "mine_tabbar_32x32_", selectedImageName: "mine_tabbar_press_32x32_")
         
         //利用KVC设置TabBar的中间的加号按钮
         // tabBar 是 readOnly属性，不能直接修改，利用KVC 把 readOnly属性的权限改过来
-        setValue(MyTabBar(), forKey: "tabBar")
+//        setValue(MyTabBar(), forKey: "tabBar")
     }
     
     /// 初始化子控制
