@@ -21,9 +21,16 @@ class MyTabBarController: UITabBarController {
         //修改tabbar字体的颜色
         let tabbar = UITabBar.appearance()
         tabbar.tintColor = UIColor(red: 245 / 255.0, green: 90 / 255.0, blue: 93 / 255.0, alpha: 1.0)
-        
+        tabbar.backgroundColor = UIColor.white
         // 添加子控制器
         addChildViewController()
+        
+        //状态栏 黑色
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.statusBarStyle = .darkContent
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     

@@ -35,16 +35,16 @@ class HomePageFunctionCollectionCell: UICollectionViewCell {
     
     // MARK: - Private
     func initSubviews() {
-        addSubview(icon)
+        contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.contentView)
-            make.centerY.equalTo(self.contentView)
+            make.centerX.equalTo(contentView)
+            make.centerY.equalTo(contentView)
             make.width.height.equalTo(25)
         }
         
-        addSubview(titleLab)
+        contentView.addSubview(titleLab)
         titleLab.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.contentView)
+            make.centerX.equalTo(contentView)
             make.top.equalTo(icon.snp.bottom).offset(10)
         }
     }
